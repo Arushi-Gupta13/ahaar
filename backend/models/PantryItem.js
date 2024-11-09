@@ -1,16 +1,37 @@
 const mongoose = require('mongoose');
 
+// Define the schema
 const pantryItemSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  quantity: { type: Number, required: true },
-  expiryDate: { type: Date },
-  owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
-});
+    name: {
+        type: String,
+        required: true
+    },
+    expiryDate: {
+        type: Date,
+        required: true
+    },
+    quantity: {
+        type: Number,
+        default: 1
+    }
+}, { timestamps: true });
 
-module.exports = mongoose.model('PantryItem', pantryItemSchema);
-db.pantryitems.insertMany([
-    { name: "Milk", expiryDate: new Date(new Date().setDate(new Date().getDate() + 1)), owner: ObjectId("user_id_1") },
-    { name: "Eggs", expiryDate: new Date(new Date().setDate(new Date().getDate() + 3)), owner: ObjectId("user_id_2") },
-    { name: "Bread", expiryDate: new Date(new Date().setDate(new Date().getDate() - 2)), owner: ObjectId("user_id_1") } // expired
-  ]);
-  
+// Create and export the model
+const PantryItem = mongoose.model('PantryItem', pantryItemSchema);
+
+// Optional: Function to seed initial data
+async function seedPantryItems() {
+    const initialItems = [
+        // Your items here
+    ];
+
+    try {
+        await PantryItem.insertMany(initialItems);
+        console.log('Initial pantry items seeded');
+    } catch (error) {
+        console.error('Error seeding pantry items:', error);
+    }
+}
+
+// Export only the model
+module.exports = PantryItem;

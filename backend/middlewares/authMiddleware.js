@@ -8,8 +8,8 @@ const authMiddleware = jwt({
     jwksRequestsPerMinute: 5,
     jwksUri: `https://${process.env.dev-r4b2cvtpftu7rqfq.us.auth0.com}/.well-known/jwks.json`
   }),
-  audience: process.env.1zPNckfqhJpbTUmulunbzAXll8xMJ6xm,
-  issuer: `https://${process.env.dev-r4b2cvtpftu7rqfq.us.auth0.com}/`,
+  audience: process.env.AUTH0_AUDIENCE,
+  issuer: `https://${process.env.AUTH0_DOMAIN}/`,
   algorithms: ['RS256']
 });
 
