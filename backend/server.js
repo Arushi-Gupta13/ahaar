@@ -11,7 +11,13 @@ const { startNotificationScheduler } = require('./services/notificationService')
 const app = express();
 
 // Middleware setup
-app.use(cors());
+const corsOptions = {
+    origin: ['http://localhost:3000'], // Replace with your frontend's URL later
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'x-auth-token'],
+    credentials: true,
+  };
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Database connection
