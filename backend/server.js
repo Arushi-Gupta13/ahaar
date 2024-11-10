@@ -28,7 +28,7 @@
    connectToDatabase();
 
    // Port setup
-   const PORT = process.env.PORT || 3000;
+   const PORT = process.env.PORT || 5000;
 
    // Route setup
    app.use('/api/notifications', notificationRoutes);
